@@ -1,0 +1,38 @@
+graph g {
+// Nodes
+node [shape=ellipse];
+// Posts
+author;
+createDate;
+content;
+
+// Comments
+email;
+comment;
+
+// Tags
+tag;
+
+// Entities
+node [shape=box];
+Post;
+Comment;
+
+// Joins
+node [shape=diamond];
+postcomment [label=""];
+Tag;
+
+Post--author;
+Post--createDate;
+Post--content;
+
+Comment--email;
+Comment--comment;
+
+Tag--tag [taillabel="*"];
+Tag--Post [taillabel="*"];
+
+Comment--postcomment [headlabel="*"];
+postcomment--Post [taillabel="1"];
+}
