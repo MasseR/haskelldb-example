@@ -9,7 +9,6 @@ dbdescr = DBInfo "Blog" (DBOptions False mkIdentPreserving) [
     TInfo "posts" [
         CInfo "id" (IntT, False) -- numeric and not null
       , CInfo "author" (StringT, False)
-      , CInfo "createDate" (CalendarTimeT, False)
       , CInfo "title" (StringT, False)
       , CInfo "content" (StringT, False)
     ]
