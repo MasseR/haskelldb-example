@@ -20,6 +20,7 @@ createDb conn = do
     posts = "CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, author NOT NULL, title NOT NULL, content NOT NULL)"
     comments = "CREATE TABLE comments (id INTEGER PRIMARY KEY AUTOINCREMENT, email NOT NULL, comment NOT NULL, post, foreign key (post) references Post(id))"
 
+addComment ::  Int -> String -> String -> Database -> IO ()
 addComment postid email comment db = insert db C.comments $
     C.xid << _default
   # C.email <<- email
