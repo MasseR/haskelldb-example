@@ -21,13 +21,13 @@ createDb conn = do
     comments = "CREATE TABLE comments (id INTEGER PRIMARY KEY AUTOINCREMENT, email NOT NULL, comment NOT NULL, post, foreign key (post) references Post(id))"
 
 addComment postid email comment db = insert db C.comments $
-    C.xid << _default
+    C.id << _default
   # C.email <<- email
   # C.comment <<- comment
   # C.post <<- postid
 
 savePost author title content db = insert db P.posts $
-      P.xid << _default
+      P.id << _default
     # P.author <<- author
     # P.title <<- title
     # P.content <<- content
@@ -47,7 +47,7 @@ getTopNPosts n db = do
 postsComments db = query db $ do
   posts <- table P.posts
   comments <- table C.comments
-  restrict $ (posts!P.xid .==. comments!C.post)
+  restrict $ (posts!P.id .==. comments!C.post)
   project $
       P.title << posts!P.title
     # C.email << comments!C.email
