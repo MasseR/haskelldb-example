@@ -43,7 +43,6 @@ getTopNPosts n db = do
     posts <- table P.posts
     top n
     project $ copyAll posts
-    --project $ (P.title << posts!P.title)
   return $ map (\r -> r!P.title) p
 
 postsComments db = query db $ do
