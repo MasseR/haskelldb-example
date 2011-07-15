@@ -7,7 +7,7 @@ module Blog.Posts where
 
 import Database.HaskellDB.DBLayout
 import Database.HaskellDB.CodeGen
-mkDBDirectTable "Comments" [
+mkDBDirectTable "Posts" [
     ("id", [t|Int|])
   , ("author", [t|String|])
   , ("title", [t|String|])
