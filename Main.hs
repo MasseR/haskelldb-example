@@ -27,6 +27,7 @@ addComment postid email comment db = insert db C.comments $
   # C.comment <<- comment
   # C.post <<- postid
 
+savePost ::  String -> String -> String -> Database -> IO ()
 savePost author title content db = insert db P.posts $
       P.xid << _default
     # P.author <<- author
