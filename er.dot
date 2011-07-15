@@ -3,6 +3,7 @@ graph g {
 node [shape=ellipse];
 // Posts
 author;
+title;
 createDate;
 content;
 
@@ -11,7 +12,7 @@ email;
 comment;
 
 // Tags
-tag;
+// tag;
 
 // Entities
 node [shape=box];
@@ -21,17 +22,18 @@ Comment;
 // Joins
 node [shape=diamond];
 postcomment [label=""];
-Tag;
+// Tag;
 
 Post--author;
 Post--createDate;
 Post--content;
+Post--title;
 
 Comment--email;
 Comment--comment;
 
-Tag--tag [taillabel="*"];
-Tag--Post [taillabel="*"];
+// Tag--tag [taillabel="*"];
+// Tag--Post [taillabel="*"];
 
 Comment--postcomment [headlabel="*"];
 postcomment--Post [taillabel="1"];
