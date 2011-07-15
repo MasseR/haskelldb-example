@@ -34,10 +34,12 @@ savePost author title content db = insert db P.posts $
     # P.title <<- title
     # P.content <<- content
 
+getAllPosts :: Database-> IO[Record(Database.HaskellDB.HDBRec.RecConsP.IdInt(Database.HaskellDB.HDBRec.RecConsP.AuthorString(Database.HaskellDB.HDBRec.RecConsP.TitleString(Database.HaskellDB.HDBRec.RecConsP.Content String Database.HaskellDB.HDBRec.RecNil))))]
 getAllPosts db = query db $ do
   posts <- table P.posts
   project $ copyAll posts
 
+getTopNPosts ::  Int -> Database -> IO [String]
 getTopNPosts n db = do
   p <- query db $ do
     posts <- table P.posts
@@ -45,6 +47,7 @@ getTopNPosts n db = do
     project $ copyAll posts
   return $ map (\r -> r!P.title) p
 
+postsComments :: Database-> IO[Record(Database.HaskellDB.HDBRec.RecConsP.TitleString(Database.HaskellDB.HDBRec.RecConsC.EmailString(Database.HaskellDB.HDBRec.RecConsC.Comment String Database.HaskellDB.HDBRec.RecNil)))]
 postsComments db = query db $ do
   posts <- table P.posts
   comments <- table C.comments
